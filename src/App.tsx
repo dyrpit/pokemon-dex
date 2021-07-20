@@ -1,4 +1,7 @@
 import { FC } from 'react';
+
+import Spinner from './components/Spinner/Spinner';
+
 import GlobalStyles from './theme/GlobalStyles';
 
 const App: FC = () => {
@@ -6,6 +9,7 @@ const App: FC = () => {
 		<>
 			<GlobalStyles />
 			app
+			<Spinner />
 		</>
 	);
 };

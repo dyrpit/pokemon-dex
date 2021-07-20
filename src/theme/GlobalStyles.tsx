@@ -8,8 +8,12 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    background-color: '#f7f7f7'
+  }
+
   body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 
 `;
