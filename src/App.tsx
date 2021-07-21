@@ -1,15 +1,19 @@
 import { FC } from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import Spinner from './components/Spinner/Spinner';
+import { theme } from './theme/theme';
+
+import Header from './components/Header/Header';
 
 import GlobalStyles from './theme/GlobalStyles';
 
 const App: FC = () => {
 	return (
 		<>
-			<GlobalStyles />
-			app
-			<Spinner />
+			<ThemeProvider theme={theme}>
+				<GlobalStyles />
+				<Header />
+			</ThemeProvider>
 		</>
 	);
 };

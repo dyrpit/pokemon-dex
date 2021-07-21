@@ -9,7 +9,7 @@ export const theme: DefaultTheme = {
 	fontSize: {
 		m: '14px',
 		l: '16px',
-		xl: '24px',
+		xl: '28px',
 	},
 	fontWeight: {
 		regular: 400,
