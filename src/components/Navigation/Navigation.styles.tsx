@@ -29,15 +29,20 @@ const navListVariants = {
 const overlayVariants = {
 	open: {
 		opacity: 1,
+		display: 'block',
 		transition: {
 			duration: 0.5,
 		},
 	},
 	closed: {
 		opacity: 0,
+		display: 'none',
 		transition: {
 			duration: 0.5,
 			delay: 0.5,
+			display: {
+				delay: 1,
+			},
 		},
 	},
 };
