@@ -1,7 +1,12 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useEffect, useState } from 'react';
+import { getPokedexNumber } from '../../utils/getPokedexNumber';
+
+import {
+	StyledItemLink,
+	StyledItemContent,
+	StyledItemNumber,
+	StyledItemName,
+} from './PokemonItem.styles';
 
 interface IProps {
 	name: string;
@@ -13,6 +18,7 @@ interface PokemonDetailsData {
 	sprites: {
 		front_default: string;
 	};
+	types: { slot: number; type: { name: string } }[];
 }
 const PokemonItem: FC<IProps> = ({ name, url }) => {
 	const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsData | null>(null);
@@ -27,12 +33,13 @@ const PokemonItem: FC<IProps> = ({ name, url }) => {
 	if (!pokemonDetails) return null;
 
 	return (
-		<Link to={`${pokemonDetails?.id}`}>
-			<div>
-				<p>{name}</p>
-				<img src={pokemonDetails?.sprites.front_default} alt={name} />
-			</div>
-		</Link>
+		<StyledItemLink to={`${pokemonDetails?.id}`} typeColor={pokemonDetails?.types[0].type.name}>
+			<StyledItemNumber>{getPokedexNumber(pokemonDetails.id)}</StyledItemNumber>
+			<StyledItemContent whileTap={{ scale: 0.9, transition: { duration: 0.3 } }}>
+				<img src={pokemonDetails?.sprites.front_default} alt={name} style={{ width: '90%' }} />
+				<StyledItemName typeColor={pokemonDetails?.types[0].type.name}>{name}</StyledItemName>
+			</StyledItemContent>
+		</StyledItemLink>
 	);
 };
 

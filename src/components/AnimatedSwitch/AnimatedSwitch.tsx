@@ -1,8 +1,7 @@
-import { AnimatePresence } from 'framer-motion';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
 import HomeView from '../../views/HomeView/HomeView';
 import PokemonDetailsView from '../../views/PokemonDetailsView/PokemonDetailsView';
 

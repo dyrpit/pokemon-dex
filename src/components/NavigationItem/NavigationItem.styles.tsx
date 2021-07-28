@@ -20,4 +20,5 @@ export const StyledNavItem = styled(motion.li).attrs(() => ({
 }))`
 	padding: 10px 0;
 	text-align: center;
+	text-transform: capitalize;
 `;

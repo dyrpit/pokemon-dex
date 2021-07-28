@@ -1,7 +1,7 @@
 import { FC, Dispatch, SetStateAction } from 'react';
 
-import openPokeball from '../../images/pokeball-open.png';
 import closedPokeball from '../../images/pokeball.png';
+import openPokeball from '../../images/pokeball-open.png';
 
 import { StyledMenuButton, StyledMenuIcon } from './MenuToggle.styles';
 

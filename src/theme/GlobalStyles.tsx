@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   html {
     background-color: '#f7f7f7'
   }
