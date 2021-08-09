@@ -1,6 +1,6 @@
 import styled, { ColorTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { theme } from '../../theme/theme';
+// import { theme } from '../../theme/theme';
 import { motion } from 'framer-motion';
 
 interface IProps {
@@ -12,7 +12,8 @@ export const StyledItemLink = styled(Link)<IProps>`
 	margin: 0 10px 20px 10px;
 	min-width: 150px;
 	overflow: hidden;
-	color: ${({ typeColor }) => (typeColor ? theme.color[typeColor as keyof ColorTheme] : 'black')};
+	color: ${({ theme, typeColor }) =>
+		typeColor ? theme.color[typeColor as keyof ColorTheme] : 'black'};
 	transition: 0.3s;
 
 	&:hover {
@@ -35,12 +36,13 @@ export const StyledItemNumber = styled.span`
 	top: 5px;
 	right: 10px;
 	color: inherit;
+	font-size: ${({ theme }) => theme.fontSize.m};
 `;
 
 export const StyledItemName = styled.p<IProps>`
 	align-self: stretch;
 	color: white;
-	background-color: ${({ typeColor }) =>
+	background-color: ${({ theme, typeColor }) =>
 		typeColor ? theme.color[typeColor as keyof ColorTheme] : 'black'};
 	border-radius: 0 0 10px 10px;
 	padding: 5px;

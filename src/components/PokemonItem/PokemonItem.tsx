@@ -13,12 +13,20 @@ interface IProps {
 	url: string;
 }
 
-interface PokemonDetailsData {
+export interface PokemonDetailsData {
 	id: number;
+	species: {
+		name: string;
+		url: string;
+	};
 	sprites: {
 		front_default: string;
 	};
 	types: { slot: number; type: { name: string } }[];
+	weight: number;
+	height: number;
+	stats: { base_stat: number; effort: number; stat: { name: string; url: string } }[];
+	abilities: { ability: { name: string } }[];
 }
 const PokemonItem: FC<IProps> = ({ name, url }) => {
 	const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsData | null>(null);
