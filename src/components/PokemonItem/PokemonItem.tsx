@@ -6,6 +6,7 @@ import {
 	StyledItemContent,
 	StyledItemNumber,
 	StyledItemName,
+	StyledItemImg,
 } from './PokemonItem.styles';
 
 interface IProps {
@@ -15,6 +16,7 @@ interface IProps {
 
 export interface PokemonDetailsData {
 	id: number;
+	name: string;
 	species: {
 		name: string;
 		url: string;
@@ -28,7 +30,7 @@ export interface PokemonDetailsData {
 	stats: { base_stat: number; effort: number; stat: { name: string; url: string } }[];
 	abilities: { ability: { name: string } }[];
 }
-const PokemonItem: FC<IProps> = ({ name, url }) => {
+const PokemonItem: FC<IProps> = ({ url }) => {
 	const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsData | null>(null);
 
 	useEffect(() => {
@@ -40,12 +42,16 @@ const PokemonItem: FC<IProps> = ({ name, url }) => {
 
 	if (!pokemonDetails) return null;
 
+	console.log(pokemonDetails);
+
 	return (
 		<StyledItemLink to={`${pokemonDetails?.id}`} typeColor={pokemonDetails?.types[0].type.name}>
 			<StyledItemNumber>{getPokedexNumber(pokemonDetails.id)}</StyledItemNumber>
 			<StyledItemContent whileTap={{ scale: 0.9, transition: { duration: 0.3 } }}>
-				<img src={pokemonDetails?.sprites.front_default} alt={name} style={{ width: '90%' }} />
-				<StyledItemName typeColor={pokemonDetails?.types[0].type.name}>{name}</StyledItemName>
+				<StyledItemImg src={pokemonDetails?.sprites.front_default} alt={pokemonDetails?.name} />
+				<StyledItemName typeColor={pokemonDetails?.types[0].type.name}>
+					{pokemonDetails?.name}
+				</StyledItemName>
 			</StyledItemContent>
 		</StyledItemLink>
 	);

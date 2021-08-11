@@ -5,15 +5,19 @@ import PokemonItem from '../../components/PokemonItem/PokemonItem';
 
 import { StyledHomeSectionWrapper } from './HomeView.styles';
 
+interface PokemonData {
+	name: string;
+	url: string;
+}
 interface IProps {
-	data: [];
+	data: PokemonData[];
 }
 
 const HomeView: FC<IProps> = ({ data }) => {
 	return (
 		<ContentContainer>
 			<StyledHomeSectionWrapper>
-				{data.map((pokemon: { name: string; url: string }) => (
+				{data.map((pokemon: PokemonData) => (
 					<PokemonItem key={pokemon.name} {...pokemon} />
 				))}
 			</StyledHomeSectionWrapper>

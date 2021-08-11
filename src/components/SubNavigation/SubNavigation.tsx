@@ -1,6 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { FC } from 'react';
+import { useState, FC } from 'react';
+import { AnimatePresence } from 'framer-motion';
+
+import Evolutions from '../Evolutions/Evolutions';
+import Info from '../Info/Info';
+import Stats from '../Stats/Stats';
+
 import { PokemonDetailsData } from '../PokemonItem/PokemonItem';
 
 import { StyledSubNav, StyledSubNavList, StyledSubNavItem } from './SubNavigation.styles';
@@ -12,7 +16,7 @@ interface IProps {
 const subNavList = ['info', 'stats', 'evolutions'];
 
 const SubNavigation: FC<IProps> = ({ details }) => {
-	const [currentActive, setCurrentActive] = useState<string>('info');
+	const [currentActive, setCurrentActive] = useState<number>(0);
 
 	return (
 		<>
@@ -21,8 +25,8 @@ const SubNavigation: FC<IProps> = ({ details }) => {
 					{subNavList.map((item, id) => (
 						<StyledSubNavItem
 							key={item}
-							onClick={() => setCurrentActive(item)}
-							isActive={item === currentActive}
+							onClick={() => setCurrentActive(id)}
+							isActive={id === currentActive}
 						>
 							{item}
 						</StyledSubNavItem>
@@ -31,47 +35,15 @@ const SubNavigation: FC<IProps> = ({ details }) => {
 			</StyledSubNav>
 			<AnimatePresence>
 				{subNavList.map((v, id) => {
-					console.log(v);
-
-					return (
-						<div key={v}>
-							{currentActive === v && (
-								<motion.div
-									initial={{ x: '50%' }}
-									exit={{ x: '-100%' }}
-									animate={{ x: '0%' }}
-									drag='x'
-									dragConstraints={{ left: 0, right: 0 }}
-								>
-									{v}
-								</motion.div>
-							)}
-						</div>
-					);
+					if (id === 0) {
+						return <Info details={v} key={id} isActive={currentActive === id} />;
+					} else if (id === 1) {
+						return <Stats details={v} key={id} isActive={currentActive === id} />;
+					} else {
+						return <Evolutions key={id} details={v} isActive={currentActive === id} />;
+					}
 				})}
 			</AnimatePresence>
-			{/* {currentActive === 'info' && (
-				<div>
-					<div>Weigth: {details.weight}</div>
-					<div>Height: {details.height}</div>
-					<div>
-						Abilities:{' '}
-						{details.abilities.map(({ ability }) => (
-							<p>{ability.name}</p>
-						))}
-					</div>
-				</div>
-			)}
-			{currentActive === 'stats' && (
-				<div>
-					{details.stats.map((statItem) => (
-						<div>
-							<p>{statItem.stat.name}</p>
-							<span>{statItem.base_stat}</span>
-						</div>
-					))}
-				</div>
-			)} */}
 		</>
 	);
 };

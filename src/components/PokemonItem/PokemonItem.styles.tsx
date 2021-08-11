@@ -1,6 +1,5 @@
 import styled, { ColorTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { theme } from '../../theme/theme';
 import { motion } from 'framer-motion';
 
 interface IProps {
@@ -50,4 +49,8 @@ export const StyledItemName = styled.p<IProps>`
 	text-transform: capitalize;
 	text-align: center;
 	font-size: ${({ theme }) => theme.fontSize.m};
+`;
+
+export const StyledItemImg = styled.img`
+	width: 90%;
 `;
