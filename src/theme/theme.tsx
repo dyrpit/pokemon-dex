@@ -26,6 +26,10 @@ export const theme: DefaultTheme = {
 	// },
 	color: {
 		text: 'hsl(360, 100%, 0%)',
+		lightText: 'hsl(0, 0%, 40%)',
+		mediumText: 'hsl(0, 0%, 20%)',
+		male: '#68b1f6',
+		female: '#ea79b6',
 		element: 'hsl(0, 86.45418326693228%, 50.78431372549019%)',
 		background: 'hsl(0, 0%, 96.86274509803921%)',
 		rock: 'hsl(49.17293233082707, 57.57575757575758%, 45.294117647058826%)',

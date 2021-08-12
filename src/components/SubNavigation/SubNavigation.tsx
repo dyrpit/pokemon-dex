@@ -36,7 +36,7 @@ const SubNavigation: FC<IProps> = ({ details }) => {
 			<AnimatePresence>
 				{subNavList.map((v, id) => {
 					if (id === 0) {
-						return <Info details={v} key={id} isActive={currentActive === id} />;
+						return <Info details={details} key={id} isActive={currentActive === id} />;
 					} else if (id === 1) {
 						return <Stats details={v} key={id} isActive={currentActive === id} />;
 					} else {

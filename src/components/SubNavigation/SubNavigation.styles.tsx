@@ -10,6 +10,7 @@ export const StyledSubNavList = styled.ul`
 	list-style-type: none;
 	display: flex;
 	justify-content: space-evenly;
+	margin-bottom: 10px;
 `;
 
 export const StyledSubNavItem = styled.li<IProps>`

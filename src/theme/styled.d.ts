@@ -3,6 +3,10 @@ import 'styled-components';
 declare module 'styled-components' {
 	export interface ColorTheme {
 		text: string;
+		lightText: string;
+		mediumText: string;
+		male: string;
+		female: string;
 		element: string;
 		background: string;
 		rock: string;

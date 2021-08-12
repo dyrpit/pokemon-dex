@@ -1,19 +1,77 @@
 import { FC } from 'react';
+import { motion } from 'framer-motion';
+import { getPokemonWeightOrHeight } from '../../utils/getPokemonWeightOrHeight';
+import { getPokemonGenders } from '../../utils/getPokemonGenders';
+
+import male from '../../images/male.svg';
+import female from '../../images/female.svg';
 
 import AnimatedDetails from '../AnimatedDetails/AnimatedDetails';
 
 import { PokemonDetailsData } from '../PokemonItem/PokemonItem';
 
+import { StyledInfoWrapper, StyledInfoItem, StyledItemValue } from './Info.styles';
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 interface IProps {
-	// details: PokemonDetailsData;
+	details: PokemonDetailsData;
 	isActive: boolean;
-	details: string;
 }
 
 const Info: FC<IProps> = ({ details, isActive }) => {
-	console.log(details);
+	console.log('details', details);
 
-	return <AnimatedDetails isActive={isActive}>{details}</AnimatedDetails>;
+	const [detailsText, setDetailsText] = useState<string>('');
+	const [genderRate, setGenderRate] = useState<number>(0);
+
+	useEffect(() => {
+		fetch(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log('data', data);
+				console.log(data.flavor_text_entries[0].flavor_text.split('\f').join(' '));
+				setDetailsText(data.flavor_text_entries[0].flavor_text.split('\f').join(' '));
+				setGenderRate(data.gender_rate);
+			})
+			.catch((e) => console.warn(e));
+	}, [details.id]);
+
+	return (
+		<AnimatedDetails isActive={isActive}>
+			<StyledInfoItem animate='visible' custom={1}>
+				{detailsText}
+			</StyledInfoItem>
+			<StyledInfoItem custom={2} animate='visible'>
+				Height: <StyledItemValue>{getPokemonWeightOrHeight(details.height)} m</StyledItemValue>
+			</StyledInfoItem>
+			<StyledInfoItem custom={3} animate='visible'>
+				Weight: <StyledItemValue>{getPokemonWeightOrHeight(details.weight)} kg</StyledItemValue>
+			</StyledInfoItem>
+			<StyledInfoItem custom={4} animate='visible'>
+				Abilities:{' '}
+				{details.abilities.map(({ ability }, id) => (
+					<StyledItemValue>
+						{ability.name}
+						{id === details.abilities.length - 1 ? '' : ','}
+					</StyledItemValue>
+				))}
+			</StyledInfoItem>
+			<StyledInfoItem custom={5} animate='visible'>
+				Genders:{' '}
+				{getPokemonGenders(genderRate).map((gender, id) => (
+					<StyledItemValue color={!id ? 'male' : 'female'}>
+						<img
+							src={!id ? male : female}
+							style={{ width: '14px' }}
+							alt={!id ? 'male icon' : 'female icon'}
+						/>
+						{gender}%
+					</StyledItemValue>
+				))}
+			</StyledInfoItem>
+		</AnimatedDetails>
+	);
 };
 
 export default Info;
