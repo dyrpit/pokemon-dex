@@ -1,18 +1,16 @@
-import { FC } from 'react';
-import { motion } from 'framer-motion';
+import { FC, useEffect, useState } from 'react';
+
 import { getPokemonWeightOrHeight } from '../../utils/getPokemonWeightOrHeight';
 import { getPokemonGenders } from '../../utils/getPokemonGenders';
+
+import { PokemonDetailsData } from '../PokemonItem/PokemonItem';
 
 import male from '../../images/male.svg';
 import female from '../../images/female.svg';
 
 import AnimatedDetails from '../AnimatedDetails/AnimatedDetails';
 
-import { PokemonDetailsData } from '../PokemonItem/PokemonItem';
-
-import { StyledInfoWrapper, StyledInfoItem, StyledItemValue } from './Info.styles';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { StyledInfoItem, StyledItemValue, StyledItemName, StyledItemImg } from './Info.styles';
 
 interface IProps {
 	details: PokemonDetailsData;
@@ -43,13 +41,15 @@ const Info: FC<IProps> = ({ details, isActive }) => {
 				{detailsText}
 			</StyledInfoItem>
 			<StyledInfoItem custom={2} animate='visible'>
-				Height: <StyledItemValue>{getPokemonWeightOrHeight(details.height)} m</StyledItemValue>
+				<StyledItemName>Height: </StyledItemName>
+				<StyledItemValue>{getPokemonWeightOrHeight(details.height)} m</StyledItemValue>
 			</StyledInfoItem>
 			<StyledInfoItem custom={3} animate='visible'>
-				Weight: <StyledItemValue>{getPokemonWeightOrHeight(details.weight)} kg</StyledItemValue>
+				<StyledItemName>Weight: </StyledItemName>
+				<StyledItemValue>{getPokemonWeightOrHeight(details.weight)} kg</StyledItemValue>
 			</StyledInfoItem>
 			<StyledInfoItem custom={4} animate='visible'>
-				Abilities:{' '}
+				<StyledItemName>Abilities: </StyledItemName>
 				{details.abilities.map(({ ability }, id) => (
 					<StyledItemValue>
 						{ability.name}
@@ -58,14 +58,10 @@ const Info: FC<IProps> = ({ details, isActive }) => {
 				))}
 			</StyledInfoItem>
 			<StyledInfoItem custom={5} animate='visible'>
-				Genders:{' '}
+				<StyledItemName>Genders: </StyledItemName>
 				{getPokemonGenders(genderRate).map((gender, id) => (
 					<StyledItemValue color={!id ? 'male' : 'female'}>
-						<img
-							src={!id ? male : female}
-							style={{ width: '14px' }}
-							alt={!id ? 'male icon' : 'female icon'}
-						/>
+						<StyledItemImg src={!id ? male : female} alt={!id ? 'male icon' : 'female icon'} />
 						{gender}%
 					</StyledItemValue>
 				))}
