@@ -18,4 +18,5 @@ export const StyledSubNavItem = styled.li<IProps>`
 	font-weight: ${({ theme }) => theme.fontWeight.bold};
 	text-transform: capitalize;
 	border-bottom: ${({ isActive }) => (isActive ? '3px solid rgba(0, 0, 0, 0.4)' : 'none')};
+	cursor: pointer;
 `;

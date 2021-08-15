@@ -18,8 +18,15 @@ export const StyledDetailsHeader = styled.div`
 `;
 
 export const StyledDetailsPokedexNum = styled.span`
+	display: flex;
 	font-size: ${({ theme }) => theme.fontSize.m};
 	color: white;
+`;
+
+export const StyledDetailsFavouriteImg = styled.img`
+	width: 15px;
+	margin-right: 10px;
+	cursor: pointer;
 `;
 
 export const StyledButton = styled(motion.button)`

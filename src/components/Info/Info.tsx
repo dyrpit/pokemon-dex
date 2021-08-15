@@ -18,8 +18,6 @@ interface IProps {
 }
 
 const Info: FC<IProps> = ({ details, isActive }) => {
-	console.log('details', details);
-
 	const [detailsText, setDetailsText] = useState<string>('');
 	const [genderRate, setGenderRate] = useState<number>(0);
 
@@ -27,8 +25,6 @@ const Info: FC<IProps> = ({ details, isActive }) => {
 		fetch(`https://pokeapi.co/api/v2/pokemon-species/${details.id}/`)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('data', data);
-				console.log(data.flavor_text_entries[0].flavor_text.split('\f').join(' '));
 				setDetailsText(data.flavor_text_entries[0].flavor_text.split('\f').join(' '));
 				setGenderRate(data.gender_rate);
 			})

@@ -38,7 +38,7 @@ const SubNavigation: FC<IProps> = ({ details }) => {
 					if (id === 0) {
 						return <Info details={details} key={id} isActive={currentActive === id} />;
 					} else if (id === 1) {
-						return <Stats details={v} key={id} isActive={currentActive === id} />;
+						return <Stats stats={details.stats} key={id} isActive={currentActive === id} />;
 					} else {
 						return <Evolutions key={id} details={v} isActive={currentActive === id} />;
 					}
