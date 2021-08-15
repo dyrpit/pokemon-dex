@@ -60,7 +60,9 @@ export const StyledTypesContainer = styled.div`
 export const StyledSubMenuContainer = styled.div`
 	background-color: white;
 	padding: 10px;
+	margin: 0 auto;
 	border-radius: 5px;
+	max-width: 800px;
 `;
 
 export const StyledSubSectionContainer = styled.div`
