@@ -27,6 +27,10 @@ declare module 'styled-components' {
 		fire: string;
 		electric: string;
 		dragon: string;
+		hp: string;
+		attack: string;
+		defense: string;
+		speed: string;
 	}
 	export interface DefaultTheme {
 		color: ColorTheme;

@@ -50,11 +50,11 @@ const PokemonItem: FC<IProps> = ({ url }) => {
 	const { id, name, sprites, types } = pokemonDetails;
 
 	return (
-		<StyledItemLink to={`${id}`} typeColor={types[0].type.name}>
+		<StyledItemLink to={`${id}`} color={types[0].type.name}>
 			<StyledItemNumber>{getPokedexNumber(id)}</StyledItemNumber>
 			<StyledItemContent whileTap={{ scale: 0.9, transition: { duration: 0.3 } }}>
 				<StyledItemImg src={sprites.front_default} alt={name} />
-				<StyledItemName typeColor={types[0].type.name}>{name}</StyledItemName>
+				<StyledItemName color={types[0].type.name}>{name}</StyledItemName>
 			</StyledItemContent>
 		</StyledItemLink>
 	);

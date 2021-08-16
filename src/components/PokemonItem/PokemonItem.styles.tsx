@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 interface IProps {
-	typeColor?: string;
+	color?: string;
 }
 
 export const StyledItemLink = styled(Link)<IProps>`
@@ -11,8 +11,7 @@ export const StyledItemLink = styled(Link)<IProps>`
 	margin: 0 10px 20px 10px;
 	min-width: 150px;
 	overflow: hidden;
-	color: ${({ theme, typeColor }) =>
-		typeColor ? theme.color[typeColor as keyof ColorTheme] : 'black'};
+	color: ${({ theme, color }) => (color ? theme.color[color as keyof ColorTheme] : 'black')};
 	transition: 0.3s;
 
 	&:hover {
@@ -41,8 +40,8 @@ export const StyledItemNumber = styled.span`
 export const StyledItemName = styled.p<IProps>`
 	align-self: stretch;
 	color: white;
-	background-color: ${({ theme, typeColor }) =>
-		typeColor ? theme.color[typeColor as keyof ColorTheme] : 'black'};
+	background-color: ${({ theme, color }) =>
+		color ? theme.color[color as keyof ColorTheme] : 'black'};
 	border-radius: 0 0 10px 10px;
 	padding: 5px;
 	margin: -12px;

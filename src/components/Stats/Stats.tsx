@@ -1,14 +1,23 @@
 import { FC } from 'react';
+
+import { PokemonStats } from '../PokemonItem/PokemonItem';
+
 import AnimatedDetails from '../AnimatedDetails/AnimatedDetails';
+import StatItem from '../StatItem/StatItem';
 
 interface IProps {
-	// details: PokemonDetailsData;
+	stats: PokemonStats[];
 	isActive: boolean;
-	details: string;
 }
 
-const Stats: FC<IProps> = ({ details, isActive }) => {
-	return <AnimatedDetails isActive={isActive}>{details}</AnimatedDetails>;
+const Stats: FC<IProps> = ({ stats, isActive }) => {
+	return (
+		<AnimatedDetails isActive={isActive}>
+			{stats.map((stat) => (
+				<StatItem key={stat.stat.name} statItem={stat} />
+			))}
+		</AnimatedDetails>
+	);
 };
 
 export default Stats;

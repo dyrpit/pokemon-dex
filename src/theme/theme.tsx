@@ -50,6 +50,10 @@ export const theme: DefaultTheme = {
 		fire: '#f57d31',
 		electric: '#f9cf30',
 		dragon: '#7037ff',
+		hp: '#72dda9',
+		attack: '#d76b6d',
+		defense: '#f5c784',
+		speed: '#78aff5',
 	},
 	fontSize: {
 		m: '14px',
