@@ -14,10 +14,6 @@ const AnimatedSwitch: FC = () => {
 			.then((res) => res.json())
 			.then((data) => setData(data.results))
 			.catch((e) => console.warn(e));
-
-		console.log('mount');
-
-		return () => console.log('unmount');
 	}, []);
 
 	return (

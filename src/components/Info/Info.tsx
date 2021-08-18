@@ -47,7 +47,7 @@ const Info: FC<IProps> = ({ details, isActive }) => {
 			<StyledInfoItem custom={4} animate='visible'>
 				<StyledItemName>Abilities: </StyledItemName>
 				{details.abilities.map(({ ability }, id) => (
-					<StyledItemValue>
+					<StyledItemValue key={ability.name}>
 						{ability.name}
 						{id === details.abilities.length - 1 ? '' : ','}
 					</StyledItemValue>
@@ -56,7 +56,7 @@ const Info: FC<IProps> = ({ details, isActive }) => {
 			<StyledInfoItem custom={5} animate='visible'>
 				<StyledItemName>Genders: </StyledItemName>
 				{getPokemonGenders(genderRate).map((gender, id) => (
-					<StyledItemValue color={!id ? 'male' : 'female'}>
+					<StyledItemValue key={id} color={!id ? 'male' : 'female'}>
 						<StyledItemImg src={!id ? male : female} alt={!id ? 'male icon' : 'female icon'} />
 						{gender}%
 					</StyledItemValue>

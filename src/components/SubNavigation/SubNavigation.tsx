@@ -40,7 +40,7 @@ const SubNavigation: FC<IProps> = ({ details }) => {
 					} else if (id === 1) {
 						return <Stats stats={details.stats} key={id} isActive={currentActive === id} />;
 					} else {
-						return <Evolutions key={id} details={v} isActive={currentActive === id} />;
+						return <Evolutions key={id} details={details} isActive={currentActive === id} />;
 					}
 				})}
 			</AnimatePresence>
