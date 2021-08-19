@@ -35,8 +35,8 @@ const Evolutions: FC<IProps> = ({ details, isActive }) => {
 
 	return (
 		<AnimatedDetails isActive={isActive}>
-			{evolutionChain.map((evolution) => (
-				<EvolutionItem key={evolution} name={evolution} />
+			{evolutionChain.map((evolution, id) => (
+				<EvolutionItem key={evolution} name={evolution} isLast={id !== evolutionChain.length - 1} />
 			))}
 		</AnimatedDetails>
 	);
