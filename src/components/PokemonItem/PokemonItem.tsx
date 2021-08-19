@@ -14,6 +14,10 @@ interface IProps {
 	url: string;
 }
 
+export interface PokemonType {
+	slot: number;
+	type: { name: string };
+}
 export interface PokemonStats {
 	base_stat: number;
 	effort: number;
@@ -29,7 +33,8 @@ export interface PokemonDetailsData {
 	sprites: {
 		front_default: string;
 	};
-	types: { slot: number; type: { name: string } }[];
+	// types: { slot: number; type: { name: string } }[];
+	types: PokemonType[];
 	weight: number;
 	height: number;
 	stats: PokemonStats[];
