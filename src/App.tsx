@@ -15,7 +15,7 @@ const App: FC = () => {
 			<ThemeProvider theme={theme}>
 				<GlobalStyles />
 				<Header />
-				<Router>
+				<Router basename={process.env.PUBLIC_URL}>
 					<AnimatedSwitch />
 				</Router>
 			</ThemeProvider>
