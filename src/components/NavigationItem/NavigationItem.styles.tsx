@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export const navItemVariants = {
 	open: {
@@ -21,4 +22,8 @@ export const StyledNavItem = styled(motion.li).attrs(() => ({
 	padding: 10px 0;
 	text-align: center;
 	text-transform: capitalize;
+`;
+
+export const StyledLink = styled(Link)`
+	color: ${({ theme }) => theme.color.text};
 `;

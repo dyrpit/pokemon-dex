@@ -1,13 +1,17 @@
 import { FC } from 'react';
 
-import { StyledNavItem } from './NavigationItem.styles';
+import { StyledNavItem, StyledLink } from './NavigationItem.styles';
 
 interface IProps {
 	title: string;
 }
 
 const NavigationItem: FC<IProps> = ({ title }) => {
-	return <StyledNavItem>{title}</StyledNavItem>;
+	return (
+		<StyledNavItem>
+			<StyledLink to={`/${title}`}>{title}</StyledLink>
+		</StyledNavItem>
+	);
 };
 
 export default NavigationItem;
