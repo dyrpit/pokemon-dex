@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import HomeView from '../../views/HomeView/HomeView';
 import PokemonDetailsView from '../../views/PokemonDetailsView/PokemonDetailsView';
+import AboutView from '../../views/AboutView/AboutView';
 
 const AnimatedSwitch: FC = () => {
 	const [data, setData] = useState<[]>([]);
@@ -20,6 +21,7 @@ const AnimatedSwitch: FC = () => {
 		<AnimatePresence>
 			<Switch location={location} key={location.key}>
 				<Route exact path='/' render={() => <HomeView data={data} />} />
+				<Route path='/about' render={() => <AboutView />} />
 				<Route path='/:id' render={() => <PokemonDetailsView />} />
 			</Switch>
 		</AnimatePresence>
