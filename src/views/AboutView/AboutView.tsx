@@ -1,7 +1,9 @@
 import { FC } from 'react';
+
 import ContentContainer from '../../components/ContentContainer/ContentContainer';
 import SectionContainer from '../../components/SectionContainer/SectionConatiner';
-import { StyledAboutText, StyledAboutTitle, StyledAboutLink } from './About.styles';
+
+import { StyledAboutText, StyledAboutTitle, StyledAboutLink } from './AboutView.styles';
 
 const AboutView: FC = () => {
 	return (
