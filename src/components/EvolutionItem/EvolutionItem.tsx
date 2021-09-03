@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { getPokemonDetails, PokemonType } from '../../api/api';
 import { getPokedexNumber } from '../../utils/getPokedexNumber';
-import { PokemonType } from '../PokemonItem/PokemonItem';
 
 import TypeDisplay from '../TypeDisplay/TypeDisplay';
 
@@ -25,8 +25,7 @@ const EvolutionItem: FC<IProps> = ({ name, isLast }) => {
 	const [pokemonTypes, setPokemonTypes] = useState<PokemonType[]>();
 
 	useEffect(() => {
-		fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-			.then((res) => res.json())
+		getPokemonDetails(name)
 			.then((data) => {
 				setPokemonImg(data.sprites.front_default);
 				setPokedexId(data.id);
@@ -46,7 +45,8 @@ const EvolutionItem: FC<IProps> = ({ name, isLast }) => {
 					<StyledEvolutionNumber>{getPokedexNumber(pokedexId)}</StyledEvolutionNumber>
 				</StyledEvolutionName>
 				<StyledTypesWrapper>
-					{pokemonTypes && pokemonTypes.map(({ type }) => <TypeDisplay type={type.name} />)}
+					{pokemonTypes &&
+						pokemonTypes.map(({ type }) => <TypeDisplay type={type.name} key={type.name} />)}
 				</StyledTypesWrapper>
 				{isLast && (
 					<StyledArrowsWrapper>

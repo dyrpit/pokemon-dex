@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
+import { PokemonStats } from '../../api/api';
 import { getColorKey } from '../../utils/getColorKey';
-import { PokemonStats } from '../PokemonItem/PokemonItem';
 
 import {
 	AnimatedStatBar,

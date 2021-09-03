@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { PokemonStats } from '../PokemonItem/PokemonItem';
+import { PokemonStats } from '../../api/api';
 
 import AnimatedDetails from '../AnimatedDetails/AnimatedDetails';
 import StatItem from '../StatItem/StatItem';
