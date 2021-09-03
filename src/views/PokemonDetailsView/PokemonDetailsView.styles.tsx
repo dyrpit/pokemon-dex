@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import styled, { ColorTheme } from 'styled-components';
 
 interface IProps {
@@ -9,47 +8,6 @@ export const StyledDetailsWrapper = styled.div<IProps>`
 	background-color: ${({ theme, typeColor }) =>
 		typeColor ? theme.color[typeColor as keyof ColorTheme] : 'black'};
 	padding: 5px;
-`;
-
-export const StyledDetailsHeader = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-`;
-
-export const StyledDetailsPokedexNum = styled.span`
-	display: flex;
-	font-size: ${({ theme }) => theme.fontSize.m};
-	color: white;
-`;
-
-export const StyledDetailsFavouriteImg = styled.img`
-	width: 15px;
-	margin-right: 10px;
-	cursor: pointer;
-`;
-
-export const StyledButton = styled(motion.button)`
-	color: white;
-	background-color: transparent;
-	padding: 10px;
-	font-size: ${({ theme }) => theme.fontSize.l};
-	font-weight: ${({ theme }) => theme.fontWeight.bold};
-	text-transform: capitalize;
-	border: none;
-	outline: none;
-	cursor: pointer;
-
-	& i {
-		margin-right: 10px;
-	}
-`;
-
-export const StyledItemTitle = styled.h2`
-	color: white;
-	text-align: center;
-	text-transform: capitalize;
-	font-size: ${({ theme }) => theme.fontSize.xl};
 `;
 
 export const StyledTypesContainer = styled.div`
